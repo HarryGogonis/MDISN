@@ -48,8 +48,9 @@ if __name__ == '__main__':
     
     # Aggregate count of tweets containing each candidate
     candidates = ['Sanders','Carson','Hilary','Trump'] 
-    tweets_by_candidate = [sanders.count(), carson.count(), hilary.count(), trump.count()]
-    
+
+
+    tweets_by_candidate = [len(sanders), len(carson), len(hilary), len(trump)]
     x_pos = list(range(len(candidates)))
     width = 0.8
     fig, ax = plt.subplots()
@@ -58,6 +59,7 @@ if __name__ == '__main__':
     # Setup axis labels
     ax.set_ylabel('Number of tweets', fontsize=15)
     ax.set_title('Number of tweets containing names of popular election candidates (sample data)', fontsize=10, fontweight='bold')
-    ax.set_xticks([p+0.4*width for p in x_pos])
+    ax.set_xticks([p+0.5*width for p in x_pos])
     ax.set_xticklabels(candidates)
     plt.grid()
+    plt.show()
