@@ -22,5 +22,5 @@ if __name__ == '__main__':
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
     stream = Stream(auth, listener)
-
-    stream.filter(track=['Trump', 'Carson', 'Sanders', 'Clinton'])
+    
+    stream.filter(track=['Clinton', 'Sanders', 'Trump', 'Carson', 'Rubio', 'Cruz', 'Bush'])

@@ -20,7 +20,9 @@ if __name__ == '__main__':
     with open(data_path, 'r') as tweets_file:
         for line in tweets_file:
             try:
-                tweets_data.append(json.loads(line))
+                tweet = json.loads(line)
+                if 'text' in tweet:
+                    tweets_data.append(json.loads(line))
             except:
                 continue
         #tweets_data = [json.loads(line) for line in tweets_file]
@@ -35,22 +37,25 @@ if __name__ == '__main__':
     tweets['favorites'] = map(lambda tweet: tweet['favorite_count'], tweets_data)
 
     # Find keywords
+    tweets['Clinton'] = tweets['text'].apply(lambda tweet: word_in_text('Clinton', tweet))
     tweets['Sanders'] = tweets['text'].apply(lambda tweet: word_in_text('Sanders', tweet))
-    tweets['Carson'] = tweets['text'].apply(lambda tweet: word_in_text('Carson', tweet))
     tweets['Trump'] = tweets['text'].apply(lambda tweet: word_in_text('Trump', tweet))
-    tweets['Hilary'] = tweets['text'].apply(lambda tweet: word_in_text('Hilary', tweet))
+    tweets['Carson'] = tweets['text'].apply(lambda tweet: word_in_text('Carson', tweet))
+    tweets['Rubio'] = tweets['text'].apply(lambda tweet: word_in_text('Rubio', tweet))
+    tweets['Cruz'] = tweets['text'].apply(lambda tweet: word_in_text('Cruz', tweet))
+    tweets['Bush'] = tweets['text'].apply(lambda tweet: word_in_text('Bush', tweet))
 
-    # DataFrames for each candidate
-    sanders = tweets[tweets['Sanders']]
-    carson = tweets[tweets['Carson']]
-    hilary = tweets[tweets['Hilary']]
-    trump = tweets[tweets['Trump']]
-    
     # Aggregate count of tweets containing each candidate
-    candidates = ['Sanders','Carson','Hilary','Trump'] 
+    candidates =['Clinton', 'Sanders', 'Trump', 'Carson', 'Rubio', 'Cruz', 'Bush']
+    tweets_by_candidate = [len(tweets[tweets['Clinton']]),
+                        len(tweets[tweets['Sanders']]), 
+                        len(tweets[tweets['Trump']]), 
+                        len(tweets[tweets['Carson']]), 
+                        len(tweets[tweets['Rubio']]), 
+                        len(tweets[tweets['Cruz']]), 
+                        len(tweets[tweets['Bush']])]
 
-
-    tweets_by_candidate = [len(sanders), len(carson), len(hilary), len(trump)]
+    # Plot
     x_pos = list(range(len(candidates)))
     width = 0.8
     fig, ax = plt.subplots()
@@ -58,7 +63,7 @@ if __name__ == '__main__':
     
     # Setup axis labels
     ax.set_ylabel('Number of tweets', fontsize=15)
-    ax.set_title('Number of tweets containing names of popular election candidates (sample data)', fontsize=10, fontweight='bold')
+    ax.set_title('Number of tweets containing names of popular 2016 election candidates (sample data)', fontsize=10, fontweight='bold')
     ax.set_xticks([p+0.5*width for p in x_pos])
     ax.set_xticklabels(candidates)
     plt.grid()
