@@ -20,3 +20,4 @@ Please insert your keys into the files before continuing
 
 * http://adilmoujahid.com/posts/2014/07/twitter-analytics/
 * http://marcobonzanini.com/2015/03/02/mining-twitter-data-with-python-part-1/
+* https://sites.google.com/site/miningtwitter/questions/user-tweets/who-retweet
