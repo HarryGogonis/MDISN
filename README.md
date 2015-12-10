@@ -1,20 +1,11 @@
-# Requirements
+# Files
 
-* tweepy
-* matplotlib
-* pandas
+* `strema.py` Used to collect streaming data from twitter
+* `collect.py` used to collect historical data from twitter
+* `gini.py` gini coefficient calculation in spark
+* `velocity.py` velocity calculations in spark
 
-# Usage
-
-Please insert your keys into the files before continuing
-
-* Collect streaming data
-  `python stream.py > output.txt`
-* Collect historical data
-  `python collect.py Obama > obama.txt`
-* Analyize data
-  `python analyize.py output.txt`
-
+## [https://spark.apache.org/docs/latest/](Spark)
 
 # Resources
 
