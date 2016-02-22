@@ -1,5 +1,7 @@
 # Temporal Patterns of Misinformation Diffusion in Online Social Networks
 
+# [View the paper here](http://www.slideshare.net/HaralambosGogonis/temporalpatternsofmisinformationdiffusioninonlinesocialnetworks)
+
 ## Files
 
 * `stream.py` Used to collect streaming data from twitter
